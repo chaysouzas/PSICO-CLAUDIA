@@ -1,0 +1,537 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcf9f7;
+            color: #2d2a2a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* cores principais */
+        :root {
+            --coral: #DC5F33;
+            --coral-light: #ffe3e3;
+            --mustard: #DBAC3B;
+            --mustard-light: #fef5d3;
+            --teal: #2F503D;
+            --teal-light: #d9f3f0;
+            --lavender: #655593;
+            --lavender-light: #f0e6ff;
+            --warm-gray: #f4f1ed;
+        }
+
+        /* ===== MENU HAMBÚRGUER ===== */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            width: 100%;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+            max-width: 1280px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo a {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 700;
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, var(--coral), var(--mustard));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            display: block;
+            line-height: 1.2;
+        }
+
+        .logo-adc{
+            font-family: 'Inter', sans-serif;
+            font-style: italic;
+            font-size: 0.85rem;
+            color: #555;
+            margin-top: -1.5em;
+        }
+
+        /* ícone hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            z-index: 1001;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background: var(--coral);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+            background: var(--lavender);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+            background: var(--lavender);
+        }
+
+        /* menu desktop */
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #3d3d3d;
+            transition: 0.2s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+            font-size: 1rem;
+        }
+
+        .nav-menu a:hover {
+            border-bottom-color: var(--teal);
+            color: #1a1a1a;
+        }
+
+        /* ajustes hero */
+        .hero {
+            padding: 3rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 6vw, 3.2rem);
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--coral);
+            background: var(--coral-light);
+            padding: 0 0.4rem;
+            display: inline-block;
+        }
+
+        .hero-sub {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            margin: 1.2rem 0 1.8rem;
+        }
+
+        .hero-img img {
+            width: 100%;
+            border-radius: 40px 40px 40px 0;
+            box-shadow: 0 30px 40px -20px rgba(0,0,0,0.3);
+            max-height: 500px;
+            object-fit: cover;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--teal);
+            color: white;
+            font-weight: 600;
+            padding: 0.8rem 1.8rem;
+            border-radius: 60px;
+            text-decoration: none;
+            box-shadow: 0 8px 14px -8px rgba(78, 205, 196, 0.4);
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            text-align: center;
+            flex: 0 1 auto;
+        }
+
+        .btn-coral {
+            background: var(--coral);
+        }
+
+        /* seções */
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 2.6rem);
+            margin-bottom: 2rem;
+            border-bottom: 8px solid var(--mustard);
+            padding-bottom: 0.2rem;
+            display: inline-block;
+        }
+
+        .section-bg-light {
+            background: var(--warm-gray);
+        }
+
+        /* cards áreas */
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .area-card {
+            background: white;
+            padding: 2rem 1.5rem;
+            border-radius: 32px 32px 32px 0;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+            transition: 0.2s;
+        }
+
+        /* sobre */
+        .sobre-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .sobre-img img {
+            width: 100%;
+            border-radius: 50% 50% 30% 30%;
+            box-shadow: -20px 20px 0 var(--mustard);
+            max-height: 500px;
+            object-fit: cover;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin: 1.8rem 0 1rem;
+        }
+
+        .tag {
+            background: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid #eae3dc;
+        }
+
+        /* livro */
+        .livro-card {
+            background: white;
+            border-radius: 48px 48px 48px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            padding: 2rem;
+            box-shadow: 0 20px 40px -12px #ccc5bd;
+        }
+
+        .livro-capa {
+            flex: 0 0 200px;
+            margin: 0 auto;
+        }
+
+        /* .capa-ficticia svg {
+            width: 100%;
+            height: auto;
+            border-radius: 24px;
+        } */
+
+         .livro-capa img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: -20px 20px 0 var(--lavender);
+            
+            
+        }
+        .livro-isbn {
+            font-family: monospace;
+            color: var(--lavender);
+            background: var(--lavender-light);
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            display: inline-block;
+            margin: 0.8rem 0;
+        }
+
+        .btn-comprar-livro {
+            
+            text-decoration: none;
+            color: var(--warm-gray);
+        }
+
+        /* contato grid */
+        .contato-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+
+        input, textarea {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 1px solid #ddd6d0;
+            border-radius: 40px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+        }
+
+        textarea {
+            border-radius: 32px;
+        }
+
+        .map-placeholder {
+            background: #d9d0c5;
+            border-radius: 40px 40px 40px 0;
+            height: 240px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%"><rect width="400" height="300" fill="%23c1b9ae"/><text x="40" y="150" font-family="Inter" font-size="20" fill="%233d3d3d">📍 Belo Horizonte, MG</text><text x="40" y="190" font-family="Inter" font-size="16" fill="%23555555">Atendimento presencial e online</text><circle cx="260" cy="150" r="30" fill="%23ff6b6b" opacity="0.8"/><circle cx="310" cy="120" r="16" fill="%23f7d44c" opacity="0.7"/></svg>');
+            background-size: cover;
+            border: 4px solid white;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: white;
+            border-radius: 32px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 10px solid var(--teal);
+        }
+
+        .faq-question {
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+            align-items: center;
+        }
+
+        .faq-answer {
+            margin-top: 1rem;
+            color: #4b4343;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* rodapé */
+        footer {
+            background: #2d2a2a;
+            color: #f0eae4;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-grid a {
+            color: var(--mustard);
+            text-decoration: none;
+        }
+
+        .footer-grid ul {
+            list-style: none;
+        }
+
+        .footer-grid li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* SVG decorativos */
+        .floating-svg {
+            position: absolute;
+            width: 140px;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .svg-1 { top: 5%; left: -20px; }
+        .svg-2 { bottom: 5%; right: -10px; }
+
+        /* ===== RESPONSIVO ===== */
+        @media (max-width: 900px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 6rem 2rem 2rem;
+                gap: 1.8rem;
+                transition: right 0.4s ease;
+                box-shadow: -5px 0 30px rgba(0,0,0,0.1);
+                z-index: 999;
+                align-items: flex-start;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu a {
+                font-size: 1.3rem;
+                border-bottom: 2px solid var(--coral-light);
+                width: 100%;
+                padding-bottom: 8px;
+            }
+
+            .hero-grid, .sobre-grid, .contato-grid, .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero {
+                text-align: center;
+            }
+
+            .btn-group {
+                justify-content: center;
+            }
+
+            .tag-list {
+                justify-content: center;
+            }
+
+            .section-title {
+                display: block;
+                text-align: center;
+            }
+
+            .sobre-img {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .livro-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .livro-capa {
+                flex: 0 0 auto;
+                width: 220px;
+            }
+
+            .faq-item {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            .area-card {
+                padding: 1.5rem;
+            }
+
+            .contato-grid {
+                display: flex;
+                flex-direction: column;
+                max-width: 90%;
+                margin: auto;
+            }
+
+            .localizacao-mapa{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: auto;
+                max-width: 95%;
+            }
+
+
+            .footer-grid {
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .footer-grid div {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
