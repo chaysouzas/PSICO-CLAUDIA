@@ -1,5 +1,4 @@
-
-        // MENU HAMBÚRGUER
+// MENU HAMBÚRGUER
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
 
